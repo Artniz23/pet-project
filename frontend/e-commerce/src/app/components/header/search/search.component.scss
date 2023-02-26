@@ -1,0 +1,68 @@
+@import 'src/styles/colors';
+@import 'src/styles/typography';
+
+.stb-search {
+  display: flex;
+  position: relative;
+  margin: 0 5.2rem 0 2rem;
+
+  $search: &;
+
+  &__input {
+    outline: none;
+    border: none;
+    border-radius: 56px;
+    background: rgba($white, 0.2);
+    color: rgba($white, 0.5);
+    width: 100%;
+    padding: 1.6rem 12rem 1.6rem 4.4rem;
+    font-size: $text-md;
+    transition: background 0.3s;
+
+    &::placeholder {
+      font-size: $text-sm;
+      color: $white;
+      opacity: $muted;
+    }
+
+    &:hover {
+      background: rgba($white, 0.5);
+    }
+
+    &:focus {
+      color: $black;
+      background: $white;
+
+      & ~ #{$search}__button {
+        background-position: -24px center;
+        opacity: 1;
+      }
+    }
+  }
+
+  &__button {
+    position: absolute;
+    top: 50%;
+    transform: translate(0px, -50%);
+    background-repeat: no-repeat;
+    background-position: 0 center;
+    opacity: 0.5;
+    width: 2.4rem;
+    height: 2.4rem;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &--search {
+      left: 1.6rem;
+      background-image: url("/assets/icons/inputs/search.svg");
+    }
+
+    &--clear {
+      right: 1.8rem;
+      background-image: url("/assets/icons/inputs/close.svg");
+    }
+  }
+}

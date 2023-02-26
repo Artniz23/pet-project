@@ -1,0 +1,50 @@
+@import 'src/styles/colors';
+@import 'src/styles/typography';
+
+.stb-nav-menu {
+  display: flex;
+  align-items: center;
+
+  $menu: &;
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+
+    &:not(:last-child) {
+      margin-right: 3.6rem;
+    }
+
+    &:hover {
+      #{$menu}__label {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__icon {
+    display: block;
+    height: 2.7rem;
+    margin: 0 auto 0.6rem;
+    background-repeat: no-repeat;
+
+    &--user {
+      width: 1.9rem;
+      background-image: url("/assets/icons/nav-menu/user.svg");
+    }
+
+    &--cart {
+      width: 2.7rem;
+      background-image: url("/assets/icons/nav-menu/cart.svg");
+    }
+  }
+
+  &__label {
+    font-size: $text-sm;
+    color: $white;
+    opacity: $muted;
+    transition: opacity 0.3s;
+  }
+}

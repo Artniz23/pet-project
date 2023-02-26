@@ -1,0 +1,14 @@
+<div class="stb-search">
+  <input
+    class="stb-search__input"
+    placeholder="Я ищу..."
+    [value]="value"
+    (input)="onInput($event)"
+  />
+  <div class="stb-search__button stb-search__button--search"></div>
+  <div
+    class="stb-search__button stb-search__button--clear"
+    [class.hide]="!value"
+    (click)="onClear()"
+  ></div>
+</div>
