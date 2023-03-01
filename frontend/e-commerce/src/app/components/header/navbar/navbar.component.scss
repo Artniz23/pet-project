@@ -2,8 +2,57 @@
   display: flex;
   align-items: center;
   width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
 
-  &__search {
-    flex-grow: 1;
+  &__item {
+    display: flex;
+
+    &--menu-button {
+      order: 0;
+    }
+
+    &--logo {
+      order: 1;
+    }
+
+    &--nav-menu {
+      order: 3;
+    }
+
+    &--search {
+      order: 2;
+      flex-grow: 1;
+    }
   }
 }
+
+@media only screen and (max-width: 75em) {
+  .stb-navbar {
+    &__item {
+      &--nav-menu {
+        order: 2;
+      }
+
+      &--search {
+        order: 3;
+        flex-basis: 100%;
+      }
+    }
+  }
+}
+
+//@media only screen and (max-width: 64em) {
+//  .stb-navbar {
+//    &__item {
+//      &--nav-menu {
+//        order: 2;
+//      }
+//
+//      &--search {
+//        order: 3;
+//        flex-basis: 100%;
+//      }
+//    }
+//  }
+//}

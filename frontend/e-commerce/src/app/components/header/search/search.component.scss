@@ -5,13 +5,14 @@
   display: flex;
   position: relative;
   margin: 0 5.2rem 0 2rem;
+  width: 100%;
 
   $search: &;
 
   &__input {
     outline: none;
     border: none;
-    border-radius: 56px;
+    border-radius: 5.6rem;
     background: rgba($white, 0.2);
     color: rgba($white, 0.5);
     width: 100%;
@@ -34,7 +35,7 @@
       background: $white;
 
       & ~ #{$search}__button {
-        background-position: -24px center;
+        background-position: -2.4rem center;
         opacity: 1;
       }
     }
@@ -43,7 +44,7 @@
   &__button {
     position: absolute;
     top: 50%;
-    transform: translate(0px, -50%);
+    transform: translate(0rem, -50%);
     background-repeat: no-repeat;
     background-position: 0 center;
     opacity: 0.5;
@@ -64,5 +65,11 @@
       right: 1.8rem;
       background-image: url("/assets/icons/inputs/close.svg");
     }
+  }
+}
+
+@media only screen and (max-width: 75em) {
+  .stb-search {
+    margin: 0.8rem 0 0;
   }
 }

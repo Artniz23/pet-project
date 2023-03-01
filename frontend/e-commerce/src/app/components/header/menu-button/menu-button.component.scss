@@ -3,8 +3,8 @@
 .stb-menu-button {
   display: flex;
   flex-direction: column;
-  border: 1px solid rgba($white, 0.4);
-  border-radius: 8px;
+  border: 0.1rem solid rgba($white, 0.4);
+  border-radius: 0.8rem;
   padding: 2.1rem 0.9rem;
   margin-right: 2rem;
   cursor: pointer;
@@ -17,7 +17,7 @@
     width: 2.8rem;
     height: 0.4rem;
     background-color: $white;
-    border-radius: 4px;
+    border-radius: 0.4rem;
     position: relative;
 
     &::before,
@@ -29,15 +29,15 @@
       left: 0;
       display: block;
       background: $white;
-      border-radius: 4px;
+      border-radius: 0.4rem;
     }
 
     &::before {
-      top: -10px;
+      top: -1rem;
     }
 
     &::after {
-      bottom: -10px;
+      bottom: -1rem;
     }
   }
 }
