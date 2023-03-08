@@ -3,7 +3,6 @@
   align-items: center;
   width: 100%;
   flex-wrap: wrap;
-  justify-content: space-between;
 
   &__item {
     display: flex;
@@ -25,34 +24,23 @@
       flex-grow: 1;
     }
   }
-}
 
-@media only screen and (max-width: 75em) {
-  .stb-navbar {
-    &__item {
-      &--nav-menu {
-        order: 2;
-      }
+  &.tablet-landscape {
+    .stb-navbar {
+      &__item {
+        &--logo {
+          flex-grow: 1;
+        }
 
-      &--search {
-        order: 3;
-        flex-basis: 100%;
+        &--nav-menu {
+          order: 2;
+        }
+
+        &--search {
+          order: 3;
+          flex-basis: 100%;
+        }
       }
     }
   }
 }
-
-//@media only screen and (max-width: 64em) {
-//  .stb-navbar {
-//    &__item {
-//      &--nav-menu {
-//        order: 2;
-//      }
-//
-//      &--search {
-//        order: 3;
-//        flex-basis: 100%;
-//      }
-//    }
-//  }
-//}

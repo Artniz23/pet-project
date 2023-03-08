@@ -6,4 +6,8 @@
   color: $white;
   text-transform: uppercase;
   cursor: pointer;
+
+  &.tablet-portrait {
+    font-size: $text-lg;
+  }
 }

@@ -1,11 +1,15 @@
-<header class="stb-header">
+<header appMediaClass class="stb-header">
   <div class="stb-header__container">
-    <div class="stb-header__top">
-      <app-language></app-language>
-      <app-location></app-location>
-    </div>
-    <div class="stb-header__bottom">
-      <app-navbar></app-navbar>
-    </div>
+    <ng-container *appMediaInvisible="'tp'">
+      <div class="stb-header__top">
+        <app-language></app-language>
+        <app-location></app-location>
+      </div>
+      <div class="stb-header__bottom">
+        <app-navbar></app-navbar>
+      </div>
+    </ng-container>
+
+    <app-navbar-mobile *appMediaInvisible="'wl,tl'"></app-navbar-mobile>
   </div>
 </header>

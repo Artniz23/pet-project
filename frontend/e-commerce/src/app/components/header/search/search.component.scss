@@ -66,10 +66,8 @@
       background-image: url("/assets/icons/inputs/close.svg");
     }
   }
-}
 
-@media only screen and (max-width: 75em) {
-  .stb-search {
+  &.tablet-landscape {
     margin: 0.8rem 0 0;
   }
 }

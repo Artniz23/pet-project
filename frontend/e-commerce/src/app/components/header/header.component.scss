@@ -24,4 +24,14 @@
   &__bottom {
     width: 100%;
   }
+
+  &.tablet-portrait {
+    padding: 1rem 0;
+
+    .stb-header {
+      &__container {
+        padding: 0 1.6rem;
+      }
+    }
+  }
 }
