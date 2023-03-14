@@ -4,12 +4,12 @@ import { LanguageService } from '../../services/language.service';
 import { LanguageInfo } from '../../interfaces/language-info';
 
 @Component({
-  selector: 'app-languages-popup-item',
-  templateUrl: './languages-popup-item.component.html',
-  styleUrls: ['./languages-popup-item.component.scss'],
+  selector: 'app-languages-item',
+  templateUrl: './languages-item.component.html',
+  styleUrls: ['./languages-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LanguagesPopupItemComponent implements OnInit {
+export class LanguagesItemComponent implements OnInit {
   @Input() public language: Language = Language.RU;
 
   public country = '';

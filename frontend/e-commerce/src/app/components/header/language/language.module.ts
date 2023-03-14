@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LanguageComponent } from './language.component';
-import { LanguagesPopupComponent } from './languages-popup/languages-popup.component';
-import { LanguagesPopupItemComponent } from './languages-popup/languages-popup-item/languages-popup-item.component';
+import { LanguagesContainerModule } from './languages-container/languages-container.module';
 
 @NgModule({
-  declarations: [LanguageComponent, LanguagesPopupComponent, LanguagesPopupItemComponent],
+  declarations: [LanguageComponent],
   exports: [LanguageComponent],
-  imports: [CommonModule],
+  imports: [CommonModule, LanguagesContainerModule],
 })
 export class LanguageModule {}

@@ -1,3 +1,12 @@
 <nav class="stb-navbar-mobile">
-  <app-logo></app-logo>
+  <app-logo class="stb-navbar-mobile__logo"></app-logo>
+
+  <div class="stb-navbar-mobile__left-container">
+    <div class="stb-navbar-mobile__language" (click)="openDialog()">
+      <div class="stb-navbar-mobile__country flag flag--ru"></div>
+      <div class="stb-navbar-mobile__country-code">RU</div>
+    </div>
+    <div class="stb-navbar-mobile__location" (click)="openDialog()"></div>
+    <div class="stb-navbar-mobile__search" (click)="openDialog()"></div>
+  </div>
 </nav>
