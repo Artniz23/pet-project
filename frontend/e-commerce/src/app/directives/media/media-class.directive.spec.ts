@@ -47,6 +47,7 @@ describe('MediaClassDirective: Test element classes', () => {
       expect(el.classList.contains(MediaClass.WebLandscape)).toBeTruthy();
       expect(el.classList.contains(MediaClass.TabletLandscape)).toBeFalsy();
       expect(el.classList.contains(MediaClass.TablePortrait)).toBeFalsy();
+      expect(el.classList.contains(MediaClass.Mobile)).toBeFalsy();
     });
   });
 
@@ -80,6 +81,7 @@ describe('MediaClassDirective: Test element classes', () => {
       expect(el.classList.contains(MediaClass.WebLandscape)).toBeFalsy();
       expect(el.classList.contains(MediaClass.TabletLandscape)).toBeTruthy();
       expect(el.classList.contains(MediaClass.TablePortrait)).toBeFalsy();
+      expect(el.classList.contains(MediaClass.Mobile)).toBeFalsy();
     });
   });
 
@@ -113,6 +115,41 @@ describe('MediaClassDirective: Test element classes', () => {
       expect(el.classList.contains(MediaClass.WebLandscape)).toBeFalsy();
       expect(el.classList.contains(MediaClass.TabletLandscape)).toBeFalsy();
       expect(el.classList.contains(MediaClass.TablePortrait)).toBeTruthy();
+      expect(el.classList.contains(MediaClass.Mobile)).toBeFalsy();
+    });
+  });
+
+  describe(`MediaClassDirective: Test ${MediaClass.Mobile} class`, () => {
+    const mediaInfo = new MediaInfo(MediaCode.Mobile, MediaClass.Mobile);
+
+    beforeEach(async () => {
+      fakeMediaService = jasmine.createSpyObj<MediaService>(
+        'MediaService',
+        {},
+        {
+          onResize$: of(mediaInfo),
+        },
+      );
+
+      await TestBed.configureTestingModule({
+        declarations: [TestComponent, MediaClassDirective],
+        providers: [{ provide: MediaService, useValue: fakeMediaService }],
+      }).compileComponents();
+
+      fixture = TestBed.createComponent(TestComponent);
+      fixture.detectChanges();
+    });
+
+    it(`should div element has class ${MediaClass.Mobile}`, () => {
+      const el: HTMLElement = fixture.debugElement.query(
+        By.directive(MediaClassDirective),
+      ).nativeElement;
+
+      expect(el).toBeTruthy();
+      expect(el.classList.contains(MediaClass.WebLandscape)).toBeFalsy();
+      expect(el.classList.contains(MediaClass.TabletLandscape)).toBeFalsy();
+      expect(el.classList.contains(MediaClass.TablePortrait)).toBeFalsy();
+      expect(el.classList.contains(MediaClass.Mobile)).toBeTruthy();
     });
   });
 });

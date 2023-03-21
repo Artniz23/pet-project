@@ -55,6 +55,14 @@ describe('MediaInvisibleDirective: Test MediaInvisibleDirective class', () => {
     expect(directive.hasView).toBeTruthy();
   });
 
+  it(`should not be match and has view on ${MediaCode.Mobile}`, () => {
+    directive.appMediaInvisible = 'mb';
+    directive.ngOnInit();
+
+    expect(directive.isMatch).toBeFalsy();
+    expect(directive.hasView).toBeTruthy();
+  });
+
   it('should not be match and has view with incorrect data', () => {
     directive.appMediaInvisible = 'incorrect';
     directive.ngOnInit();
@@ -63,23 +71,24 @@ describe('MediaInvisibleDirective: Test MediaInvisibleDirective class', () => {
     expect(directive.hasView).toBeTruthy();
   });
 
-  it('should be check visible 3 times but cache breakpoints only once', () => {
+  it('should be check visible 4 times but cache breakpoints only once', () => {
     spyOn<any>(directive, 'checkVisible').and.callThrough();
     spyOn<any>(directive, 'cacheBreakpoints').and.callThrough();
 
-    directive.appMediaInvisible = 'wl,tl,tp';
+    directive.appMediaInvisible = 'wl,tl,tp,mb';
+    directive.ngOnInit();
     directive.ngOnInit();
     directive.ngOnInit();
     directive.ngOnInit();
 
-    expect(directive.checkVisible).toHaveBeenCalledTimes(3);
+    expect(directive.checkVisible).toHaveBeenCalledTimes(4);
     expect(directive.cacheBreakpoints).toHaveBeenCalledTimes(1);
   });
 });
 
 describe('MediaInvisibleDirective: Test count of breakpoints', () => {
-  it('should be 3 breakpoints', () => {
-    expect(MediaBreakpoint.list.size).toBe(3);
+  it('should be 4 breakpoints', () => {
+    expect(MediaBreakpoint.list.size).toBe(4);
   });
 });
 
@@ -200,6 +209,59 @@ describe(`MediaInvisibleDirective: Test directive with ${MediaCode.TablePortrait
   }
 
   const mediaInfo = new MediaInfo(MediaCode.TablePortrait, MediaClass.TablePortrait);
+
+  let fixture: ComponentFixture<TestComponent>;
+  let fakeMediaService: SpyObj<MediaService>;
+  let directive: MediaInvisibleDirective;
+
+  beforeEach(async () => {
+    fakeMediaService = jasmine.createSpyObj<MediaService>(
+      'MediaService',
+      {},
+      {
+        onResize$: of(mediaInfo),
+      },
+    );
+
+    await TestBed.configureTestingModule({
+      declarations: [TestComponent, MediaInvisibleDirective],
+      providers: [{ provide: MediaService, useValue: fakeMediaService }],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(TestComponent);
+    fixture.detectChanges();
+  });
+
+  it(`should exists appMediaInvisible on ${screenSize}`, () => {
+    const el: DebugNode[] = fixture.debugElement.queryAllNodes(
+      By.directive(MediaInvisibleDirective),
+    );
+
+    const debugNode: DebugNode = el[0];
+
+    directive = debugNode.injector.get(MediaInvisibleDirective);
+
+    expect(directive.appMediaInvisible).toBeTruthy();
+  });
+
+  it(`should div element hidden on ${screenSize}`, () => {
+    const el = fixture.debugElement.query(By.css(`#${screenSize}`));
+
+    expect(el).toBeNull();
+  });
+});
+
+describe(`MediaInvisibleDirective: Test directive with ${MediaCode.Mobile} breakpoint`, () => {
+  const screenSize = MediaCode.Mobile;
+
+  @Component({
+    template: ` <div *appMediaInvisible="screenSize" [id]="screenSize"></div> `,
+  })
+  class TestComponent {
+    screenSize = MediaCode.Mobile;
+  }
+
+  const mediaInfo = new MediaInfo(MediaCode.Mobile, MediaClass.Mobile);
 
   let fixture: ComponentFixture<TestComponent>;
   let fakeMediaService: SpyObj<MediaService>;

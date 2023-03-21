@@ -6,6 +6,8 @@ export class MediaCode {
   public static TabletLandscape = 'tl';
 
   public static TablePortrait = 'tp';
+
+  public static Mobile = 'mb';
 }
 
 export class MediaClass {
@@ -14,6 +16,8 @@ export class MediaClass {
   public static TabletLandscape = 'tablet-landscape';
 
   public static TablePortrait = 'tablet-portrait';
+
+  public static Mobile = 'mobile';
 }
 
 export class MediaScreenSize {
@@ -22,6 +26,8 @@ export class MediaScreenSize {
   public static TabletLandscape = '(max-width: 1201px) and (min-width: 842px)';
 
   public static TablePortrait = '(max-width: 841px) and (min-width: 602px)';
+
+  public static Mobile = '(max-width: 601px)';
 }
 
 export class MediaBreakpoint {
@@ -35,5 +41,6 @@ export class MediaBreakpoint {
       MediaScreenSize.TablePortrait,
       new MediaInfo(MediaCode.TablePortrait, MediaClass.TablePortrait),
     ],
+    [MediaScreenSize.Mobile, new MediaInfo(MediaCode.Mobile, MediaClass.Mobile)],
   ]);
 }
