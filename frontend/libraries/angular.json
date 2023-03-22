@@ -1,0 +1,76 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "stb-media": {
+      "projectType": "library",
+      "root": "projects/stb-media",
+      "sourceRoot": "projects/stb-media/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/stb-media/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/stb-media/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/stb-media/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/stb-media/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "stb-destroy": {
+      "projectType": "library",
+      "root": "projects/stb-destroy",
+      "sourceRoot": "projects/stb-destroy/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/stb-destroy/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/stb-destroy/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/stb-destroy/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/stb-destroy/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": "f5c53c1f-d672-4869-8ea0-520858e0c907"
+  }
+}
