@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SearchComponent } from './search.component';
-import { MediaModule } from '../../../directives/media/media.module';
+import { MediaModule } from 'stb-media';
 
 @NgModule({
   declarations: [SearchComponent],

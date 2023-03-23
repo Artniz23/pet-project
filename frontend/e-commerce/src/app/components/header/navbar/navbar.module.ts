@@ -5,7 +5,7 @@ import { LogoModule } from '../logo/logo.module';
 import { MenuButtonModule } from '../menu-button/menu-button.module';
 import { SearchModule } from '../search/search.module';
 import { NavMenuModule } from './nav-menu/nav-menu.module';
-import { MediaModule } from '../../../directives/media/media.module';
+import { MediaModule } from 'stb-media';
 
 @NgModule({
   declarations: [NavbarComponent],

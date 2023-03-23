@@ -4,8 +4,7 @@
   "peerDependencies": {
     "@angular/common": "15.2.0",
     "@angular/core": "15.2.0",
-    "@angular/cdk": "15.2.0",
-    "stb-destroy-service": "file:../../dist/stb-destroy"
+    "@angular/cdk": "15.2.0"
   },
   "dependencies": {
     "tslib": "2.5.0"

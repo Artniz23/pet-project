@@ -1,6 +1,6 @@
 import { Directive, ElementRef, Inject } from '@angular/core';
 import { MediaService } from './media.service';
-import { DestroyService } from 'stb-destroy-service';
+import { DestroyService } from 'stb-destroy';
 import { Observable, takeUntil, tap } from 'rxjs';
 import { MediaInfo } from './media-info';
 
