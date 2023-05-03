@@ -1,0 +1,7 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+/angular
+/angular-cdk-portal-example
+/angular-forroot-forchild
+/rxjs
+/.idea
