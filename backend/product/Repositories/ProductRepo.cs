@@ -41,6 +41,7 @@ public class ProductRepo: IProductRepo
         product.Description = productCreateDto.Description;
         product.SKU = productCreateDto.SKU;
         product.Price = productCreateDto.Price;
+        product.CategoryId = productCreateDto.CategoryId;
         
         _context.Products.Update(product);
     }

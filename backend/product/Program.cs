@@ -13,6 +13,7 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddScoped<IProductRepo, ProductRepo>();
 builder.Services.AddScoped<IProductImageRepo, ProductImageRepo>();
+builder.Services.AddScoped<ICategoryRepo, CategoryRepo>();
 builder.Services.AddControllers().AddNewtonsoftJson();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
