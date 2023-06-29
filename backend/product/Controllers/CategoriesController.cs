@@ -26,14 +26,14 @@ public class CategoriesController : ControllerBase
     {
         Console.WriteLine("--> Getting Categories");
 
-        IEnumerable<Category> categories = _categoryRepo.GetAll();
+        IEnumerable<Category> categories = _categoryRepo.GetParents();
 
         IEnumerable<CategoryReadDto> categoryReadDtos = _mapper.Map<IEnumerable<CategoryReadDto>>(categories);
 
         return Ok(categoryReadDtos);
     }
 
-    [HttpGet("{id}", Name = "GetById")]
+    [HttpGet("{id}", Name = "GetCategoryById")]
     public ActionResult<CategoryReadDto> GetById(int id)
     {
         Category? category = _categoryRepo.GetById(id);
@@ -60,7 +60,7 @@ public class CategoriesController : ControllerBase
         CategoryReadDto categoryReadDto = _mapper.Map<CategoryReadDto>(category);
 
         return CreatedAtRoute(
-            nameof(GetById),
+            "GetCategoryById",
             new {Id = categoryReadDto.Id},
             categoryReadDto
         );
@@ -83,7 +83,7 @@ public class CategoriesController : ControllerBase
         CategoryReadDto categoryReadDto = _mapper.Map<CategoryReadDto>(category);
         
         return CreatedAtRoute(
-            nameof(GetById),
+            "GetCategoryById",
             new {Id = categoryReadDto.Id},
             categoryReadDto
         );

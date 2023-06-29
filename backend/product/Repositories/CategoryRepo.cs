@@ -1,4 +1,5 @@
-﻿using product.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using product.Data;
 using product.Dtos;
 using product.Models;
 
@@ -25,14 +26,24 @@ public class CategoryRepo : ICategoryRepo
         return _context.Categories.ToList();
     }
 
+    public IEnumerable<Category> GetParents()
+    {
+        return _context.Categories.Where(c => c.ParentId == null).Include(c => c.Children).ToList();
+    }
+
     public Category? GetById(int id)
     {
-        return _context.Categories.FirstOrDefault(category => category.Id == id);
+        return _context.Categories.Include((category) => category.Children).FirstOrDefault(category => category.Id == id);
     }
 
     public void Create(Category category)
     {
         _context.Categories.Add(category);
+    }
+
+    public void CreateRange(IEnumerable<Category> categories)
+    {
+        _context.Categories.AddRange(categories);
     }
 
     public void Update(Category category, CategoryCreateDto categoryCreateDto)

@@ -33,7 +33,7 @@ public class ProductsController : ControllerBase
         return Ok(productReadDtos);
     }
 
-    [HttpGet("{id}", Name = "GetById")]
+    [HttpGet("{id}", Name = "GetProductById")]
     public ActionResult<ProductReadDto> GetById(int id)
     {
         Product? product = _productRepo.GetById(id);
@@ -60,7 +60,7 @@ public class ProductsController : ControllerBase
         ProductReadDto productReadDto = _mapper.Map<ProductReadDto>(product);
 
         return CreatedAtRoute(
-            nameof(GetById),
+            "GetProductById",
             new {Id = productReadDto.Id},
             productReadDto
         );
@@ -83,7 +83,7 @@ public class ProductsController : ControllerBase
         ProductReadDto productReadDto = _mapper.Map<ProductReadDto>(product);
         
         return CreatedAtRoute(
-            nameof(GetById),
+            "GetProductById",
             new {Id = productReadDto.Id},
             productReadDto
         );
