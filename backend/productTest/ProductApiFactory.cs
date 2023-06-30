@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using product.Data;
@@ -15,14 +17,14 @@ public class ProductApiFactory : WebApplicationFactory<Program>, IAsyncLifetime
 
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
+        builder.UseEnvironment("Test");
+        
         builder.ConfigureTestServices(services =>
         {
-            services.RemoveAll<AppDbContext>();
             services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseSqlServer(_container.GetConnectionString());
             });
-            services.AddDatabaseDeveloperPageExceptionFilter();
         });
     }
     

@@ -1,7 +1,7 @@
-using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using product.Data;
 using product.Repositories;
+using product.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,14 +21,17 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
+if (!builder.Environment.IsTesting())
+{
+    builder.Services.AddDbContext<AppDbContext>(options =>
+        options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
+}
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 var app = builder.Build();
 
-if (app.Environment.IsProduction())
+if (app.Environment.IsProduction() || app.Environment.IsTesting())
 {
     using (var scope = app.Services.CreateScope())
     {

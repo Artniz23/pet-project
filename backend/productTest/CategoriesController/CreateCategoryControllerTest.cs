@@ -20,8 +20,12 @@ public class CreateCategoryControllerTest : IClassFixture<ProductApiFactory>
     {
         HttpClient client = _factory.CreateClient();
 
-        HttpResponseMessage response = await client.GetAsync("http://localhost:8081/api/Categories");
+        HttpResponseMessage response = await client.GetAsync("http://localhost:7155/api/Categories");
 
+        string content = await response.Content.ReadAsStringAsync();
+        
+        _testOutputHelper.WriteLine(content);
+        
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
     }
 }
