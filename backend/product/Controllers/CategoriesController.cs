@@ -22,7 +22,7 @@ public class CategoriesController : ControllerBase
     }
 
     [HttpGet]
-    public ActionResult<IEnumerable<CategoryReadDto>> GetAll()
+    public ActionResult<IEnumerable<CategoryReadDto>> GetParents()
     {
         Console.WriteLine("--> Getting Categories");
 
@@ -89,8 +89,8 @@ public class CategoriesController : ControllerBase
         );
     }
 
-    [HttpDelete("{id}")]
-    public ActionResult Delete(int id)
+    [HttpPut("{id}/delete")]
+    public ActionResult<CategoryReadDto> Delete(int id)
     {
         Category? category = _categoryRepo.GetById(id);
 
@@ -103,6 +103,12 @@ public class CategoriesController : ControllerBase
 
         _categoryRepo.Save();
 
-        return NoContent();
+        CategoryReadDto categoryReadDto = _mapper.Map<CategoryReadDto>(category);
+        
+        return CreatedAtRoute(
+            "GetCategoryById",
+            new {Id = categoryReadDto.Id},
+            categoryReadDto
+        );
     }
 }

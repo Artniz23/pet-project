@@ -1,13 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿namespace product.Dtos;
 
-namespace product.Models;
-
-public class BaseProduct
+public class BaseReadDto
 {
-    [Key]
-    [Required]
     public int Id { get; set; }
-
+    
     public DateTimeOffset? CreatedAt { get; set; }
 
     public DateTimeOffset? UpdatedAt { get; set; }

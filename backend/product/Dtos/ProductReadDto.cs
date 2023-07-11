@@ -1,9 +1,7 @@
 ﻿namespace product.Dtos;
 
-public class ProductReadDto
+public class ProductReadDto : BaseReadDto
 {
-    public int Id { get; set; }
-    
     public string Name { get; set; }
     
     public string Description { get; set; }

@@ -35,13 +35,13 @@ public class AppDbContext : DbContext
 
         foreach (BaseProduct baseProduct in newEntities)
         {
-            baseProduct.CreatedAt = DateTime.UtcNow;
-            baseProduct.UpdatedAt = DateTime.UtcNow;
+            baseProduct.CreatedAt = DateTimeOffset.UtcNow;
+            baseProduct.UpdatedAt = DateTimeOffset.UtcNow;
         }
 
         foreach (BaseProduct baseProduct in updateEntities)
         {
-            baseProduct.UpdatedAt = DateTime.UtcNow;
+            baseProduct.UpdatedAt = DateTimeOffset.UtcNow;
         }
 
         return base.SaveChanges();

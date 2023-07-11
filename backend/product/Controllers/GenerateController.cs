@@ -22,7 +22,7 @@ public class GenerateController : ControllerBase
         _mapper = mapper;
     }
 
-    [HttpGet("/categories")]
+    [HttpGet("categories")]
     public ActionResult<List<CategoryCreateDto>> Categories()
     {
         Console.WriteLine("--> Generate categories");
@@ -40,7 +40,7 @@ public class GenerateController : ControllerBase
         return Ok(categoryCreateDtos);
     }
     
-    [HttpGet("/categories/children")]
+    [HttpGet("categories/children")]
     public ActionResult<List<CategoryCreateDto>> CategoriesChildren()
     {
         Console.WriteLine("--> Generate categories children");
