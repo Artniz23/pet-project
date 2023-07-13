@@ -91,9 +91,6 @@ public class GetAllCategoryControllerTest : IClassFixture<ProductApiFactory>
 
         string serializedCategory = JsonConvert.SerializeObject(categoryReadDto);
         string serializedCreatedCategory = JsonConvert.SerializeObject(createdCategoryReadDto);
-        
-        _testOutputHelper.WriteLine(serializedCreatedCategory);
-        _testOutputHelper.WriteLine(serializedCategory);
 
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         Assert.Equal(serializedCreatedCategory, serializedCategory);
