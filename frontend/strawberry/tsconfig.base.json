@@ -10,11 +10,75 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": ["es2020", "dom"],
+    "lib": [
+      "es2020",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@strawberry/core/api/service": [
+        "libs/core/api/service/src/index.ts"
+      ],
+      "@strawberry/core/environments/service": [
+        "libs/core/environments/service/src/index.ts"
+      ],
+      "@strawberry/core/forms/extract": [
+        "libs/core/forms/extract/src/index.ts"
+      ],
+      "@strawberry/core/forms/mask": [
+        "libs/core/forms/mask/src/index.ts"
+      ],
+      "@strawberry/core/forms/utils": [
+        "libs/core/forms/utils/src/index.ts"
+      ],
+      "@strawberry/core/hammer": [
+        "libs/core/hammer/src/index.ts"
+      ],
+      "@strawberry/core/layout/service": [
+        "libs/core/layout/service/src/index.ts"
+      ],
+      "@strawberry/core/navigation/common": [
+        "libs/core/navigation/common/src/index.ts"
+      ],
+      "@strawberry/core/navigation/service": [
+        "libs/core/navigation/service/src/index.ts"
+      ],
+      "@strawberry/core/navigation/ui/pipes": [
+        "libs/core/navigation/ui/pipes/src/index.ts"
+      ],
+      "@strawberry/core/platform/service": [
+        "libs/core/platform/service/src/index.ts"
+      ],
+      "@strawberry/core/storage/common": [
+        "libs/core/storage/common/src/index.ts"
+      ],
+      "@strawberry/core/storage/local": [
+        "libs/core/storage/local/src/index.ts"
+      ],
+      "@strawberry/core/storage/memory": [
+        "libs/core/storage/memory/src/index.ts"
+      ],
+      "@strawberry/core/storage/session": [
+        "libs/core/storage/session/src/index.ts"
+      ],
+      "@strawberry/core/testing": [
+        "libs/core/testing/src/index.ts"
+      ],
+      "@strawberry/core/utils/operators": [
+        "libs/core/utils/operators/src/index.ts"
+      ],
+      "@strawberry/core/utils/types": [
+        "libs/core/utils/types/src/index.ts"
+      ],
+      "@strawberry/core/window/service": [
+        "libs/core/window/service/src/index.ts"
+      ]
+    }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }
